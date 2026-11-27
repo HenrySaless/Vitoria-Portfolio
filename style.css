@@ -359,7 +359,45 @@ img {
 }
 .about-photo-wrap {
   position: relative;
-  padding: 0 18px 25px 0;
+  padding: 0 20px 25px 0;
+}
+.web {
+  padding: 10px 0 25px 0;
+  inset: 20px 0 0 20px;
+  width: 100%;
+  height: 12px;
+  /* border-radius: 4px; */
+  background-color: #191d1f;
+  position: relative;
+  display: flex;
+  z-index: 0;
+}
+.web::after {
+  content: "";
+  position: absolute;
+  margin: -5px 0 0 30px;
+  width: 25px;
+  height: 25px;
+  background-color: var(--blue);
+  border-radius: 50%;
+}
+.web2::after {
+  content: "";
+  position: absolute;
+  margin: -10px 0 0 90px;
+  width: 25px;
+  height: 25px;
+  background-color: #d18e35;
+  border-radius: 50%;
+}
+.web3::after {
+  content: "";
+  position: absolute;
+  margin: -10px 0 0 130px;
+  width: 25px;
+  height: 25px;
+  background-color: #bad135;
+  border-radius: 50%;
 }
 .about-photo-wrap::before {
   position: absolute;
@@ -583,13 +621,47 @@ img {
 }
 .contact-inner {
   position: relative;
-  min-height: 440px;
 }
 .contact .eyebrow {
   color: #52646b;
 }
 .contact .eyebrow-dot {
   background: var(--paper);
+}
+.contact h2 {
+  font-size: clamp(83px, 12vw, 140px);
+}
+.contact h2 .script-small {
+  font-size: 0.7em;
+}
+.contact-inner > p:not(.eyebrow) {
+  font-size: 13px;
+  line-height: 1.75;
+  margin: 23px 0;
+}
+
+.button-light {
+  border-color: #1f2527;
+}
+.button-light:hover {
+  background: #1f2527;
+  color: var(--paper);
+}
+.contact-decoration {
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  font-size: clamp(100px, 19vw, 220px);
+  font-weight: 200;
+  color: #f5f3ef50;
+  animation: slowspin 36s;
+  min-height: 440px;
+}
+.contact .eyebrow {
+  color: #52646b;
+}
+.contact .eyebrow-dot {
+  align-items: stretch;
 }
 .contact h2 {
   font-size: clamp(83px, 12vw, 140px);
@@ -631,9 +703,6 @@ img {
   padding: 8px 0 16px;
   gap: 18px;
   overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
   transform: translateY(-50%);
   outline-offset: 5px;
 }
@@ -641,16 +710,31 @@ img {
   display: none;
 }
 .carousel > .card {
-  flex: 0 0 clamp(220px, 28vw, 340px);
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border: 6px solid rgba(255, 255, 255, 0.88);
+  border: 4px solid rgba(255, 255, 255, 0.88);
   border-radius: 5px;
   background: var(--paper);
-  box-shadow: 0 16px 38px rgba(31, 37, 39, 0.16);
+  box-shadow: 0 6px 8px rgba(31, 37, 39, 0.66);
   scroll-snap-align: start;
+}
+.card:hover {
+  display: flex;
+  animation-name: maior;
+  animation-duration: 0.7s;
+
+  animation-fill-mode: forwards;
+}
+@keyframes maior {
+  0% {
+    transform: scale(100%);
+  }
+  100% {
+    transform: scale(105%);
+  }
 }
 .carousel > .card img {
   width: 100%;
@@ -658,15 +742,6 @@ img {
   max-width: none;
   object-fit: cover;
   object-position: center;
-}
-
-.carousel2 {
-  display: flex;
-  position: absolute;
-  border: red 3px solid;
-}
-.group2 {
-  display: flex;
 }
 
 .site-footer {
@@ -940,61 +1015,6 @@ img {
   }
   .carousel > .card {
     flex-basis: clamp(220px, 70vw, 320px);
-  }
-  .contact-decoration {
-    right: -3%;
-    top: 22%;
-    font-size: 135px;
-  }
-  .site-footer {
-    grid-template-columns: 1fr 1fr;
-    row-gap: 25px;
-    padding: 28px 29px;
-  }
-  .site-footer > span {
-    font-size: 7px;
-  }
-  .footer-links {
-    justify-content: flex-end;
-    gap: 14px;
-    font-size: 7px;
-  }
-  .copyright {
-    grid-column: 2;
-  }
-}
-@media (max-width: 390px) {
-  .hero {
-    padding-inline: 23px;
-  }
-  .hero h1 {
-    font-size: 88px;
-  }
-  .section-pad {
-    padding-left: 23px;
-    padding-right: 23px;
-  }
-  .gallery-grid {
-    column-gap: 12px;
-  }
-  .card-meta {
-    display: block;
-  }
-  .card-meta span {
-    display: block;
-    text-align: left;
-    margin-top: 5px;
-  }
-  .site-footer {
-    padding-inline: 23px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
