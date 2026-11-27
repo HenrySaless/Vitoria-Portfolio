@@ -90,6 +90,9 @@ img {
   align-items: center;
   gap: clamp(22px, 4vw, 55px);
 }
+.sparkle {
+  filter: hue-rotate(75deg) saturate(150%);
+}
 .main-nav a,
 .eyebrow,
 .hero-note,
@@ -222,17 +225,17 @@ img {
   height: 450px;
   width: 100%;
   justify-self: center;
-  transform: scale(100%);
-  animation-name: victoria;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
+  animation: hero-enter 0.8s ease both;
 }
 
-@keyframes victoria {
-  0% {
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
   }
-  100% {
-    transform: scale(150%);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 .photo-stack {
@@ -289,8 +292,16 @@ img {
   left: -28px;
 }
 .tag-top span {
-  color: #98b8c8;
+  display: inline-flex;
+  vertical-align: middle;
   margin-left: 8px;
+}
+.tag-top img {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-left: 8px;
+  vertical-align: middle;
 }
 .tag-bottom {
   z-index: 3;
@@ -318,6 +329,11 @@ img {
 }
 .photo-stamp small {
   font-size: 12px;
+}
+.photo-stamp img {
+  width: 14px;
+  height: 14px;
+  margin: 0 auto;
 }
 .photo-caption {
   display: flex;
@@ -478,9 +494,11 @@ img {
   position: absolute;
   right: 0;
   bottom: -25px;
-  color: #a9c9d8;
-  font-size: 40px;
+  width: 36px;
+  height: 36px;
+  opacity: 0.55;
   animation: slowspin 22s linear infinite;
+  filter: hue-rotate(75deg) saturate(150%);
 }
 .work {
   padding-top: 90px;
@@ -611,6 +629,10 @@ img {
 .gallery-footnote span {
   font-size: 19px;
   color: #9cbecf;
+}
+.gallery-footnote img {
+  width: 16px;
+  height: 16px;
 }
 .contact {
   background: #adcbd7;
@@ -817,6 +839,46 @@ img {
     max-width: 395px;
   }
 }
+@media (min-width: 1100px) {
+  .hero-visual {
+    animation-name: hero-enter-large;
+  }
+  @keyframes hero-enter-large {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(1.08);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1.22);
+    }
+  }
+}
+@media (min-width: 761px) and (max-width: 1020px) {
+  .hero {
+    padding-inline: 6vw;
+    gap: 4vw;
+  }
+  .hero h1 {
+    font-size: clamp(84px, 11vw, 130px);
+  }
+  .hero-visual {
+    height: 400px;
+  }
+  .hero-photo {
+    height: 350px;
+  }
+  .section-pad {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+  .about {
+    gap: 6vw;
+  }
+  .carousel {
+    width: 52%;
+  }
+}
 @media (max-width: 760px) {
   html {
     scroll-padding-top: 67px;
@@ -903,8 +965,29 @@ img {
   }
   .hero-visual {
     width: min(83%, 360px);
+    height: auto;
+    min-height: 0;
     justify-self: center;
-    margin-right: 13px;
+    margin: 0 auto;
+    transform: none;
+  }
+  .photo-stack {
+    padding: 12px 12px 38px;
+  }
+  .hero-photo {
+    height: auto;
+    aspect-ratio: 0.94;
+    object-fit: contain;
+  }
+  .folder-art {
+    width: 112%;
+    max-width: 420px;
+  }
+  .tag-top {
+    left: -12px;
+  }
+  .photo-stamp {
+    right: -8px;
   }
   .tag-top {
     left: -24px;
@@ -1021,5 +1104,8 @@ img {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+  body {
+    overflow-x: hidden;
   }
 }
