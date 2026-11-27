@@ -100,12 +100,6 @@ if (photoCarousel && carouselDots) {
     updateCurrentDot();
     updateEdgeButtons();
   }, { passive: true });
-  photoCarousel.addEventListener("wheel", (event) => {
-    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-      event.preventDefault();
-      photoCarousel.scrollLeft += event.deltaY;
-    }
-  }, { passive: false });
   updateCurrentDot();
   updateEdgeButtons();
 }

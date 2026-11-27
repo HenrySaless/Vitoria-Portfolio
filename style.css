@@ -724,10 +724,12 @@ img {
   height: clamp(280px, 32vw, 410px);
   padding: 8px 0 16px;
   gap: 18px;
-  overflow-x: auto;
+  overflow: hidden;
   transform: translateY(-50%);
   outline-offset: 5px;
   scroll-snap-type: x mandatory;
+  touch-action: pan-y;
+  overscroll-behavior: none;
 }
 .carousel::-webkit-scrollbar {
   display: none;
